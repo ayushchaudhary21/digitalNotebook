@@ -1,20 +1,32 @@
 package com.note.Notes.Entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Entity
 public class Notes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long notesId;
+   private  long notesId;
     @Column(nullable = false,unique = true)
-    String title;
-    String Content;
+   private  String title;
+   private  String content;
 
+   private LocalDateTime timeStamp=LocalDateTime.now();
+
+
+//   @ManyToOne
+//    @JoinColumn(name="user_id")
+//   @JsonManagedReference
+//   // Create the another column in the Notes Table with the foreign key.
+//    private User user;
 }

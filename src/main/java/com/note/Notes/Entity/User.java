@@ -1,9 +1,8 @@
 package com.note.Notes.Entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
 import java.util.ArrayList;
@@ -13,20 +12,23 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private long id;
 
 
      @Column(nullable=false,unique = true)
-    String userName;
+    private String userName;
 
     @Column(nullable=false)
-    String password;
-    String userEmail;
+     private String password;
+    @Column(nullable=false,unique=true)
+    private String userEmail;
 
-    @OneToMany
-   List<Notes> list=new ArrayList<>();
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+//    @JsonManagedReference
+//   List<Notes> list=new ArrayList<>();
 
 }
