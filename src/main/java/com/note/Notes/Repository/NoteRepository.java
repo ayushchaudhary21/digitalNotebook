@@ -11,8 +11,8 @@ import java.util.Optional;
 
 @Repository
 public interface NoteRepository extends JpaRepository<Notes,Long> {
-//    @Transactional
-//    @Modifying
+    @Transactional
+    @Modifying
       void  deleteByTitle(String title);
    Optional<Notes> findByTitle(String title);
 }
