@@ -27,8 +27,8 @@ public class User {
     @Column(nullable=false,unique=true)
     private String userEmail;
 
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-//    @JsonManagedReference
-//   List<Notes> list=new ArrayList<>();
+    @OneToMany( mappedBy = "userId", cascade = CascadeType.ALL,orphanRemoval = true)
+    @JsonManagedReference
+      List<Notes> notesList=new ArrayList<>();
 
 }

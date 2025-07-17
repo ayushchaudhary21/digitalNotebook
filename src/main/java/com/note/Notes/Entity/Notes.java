@@ -1,5 +1,6 @@
 package com.note.Notes.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -24,9 +25,9 @@ public class Notes {
    private LocalDateTime timeStamp=LocalDateTime.now();
 
 
-//   @ManyToOne
-//    @JoinColumn(name="user_id")
-//   @JsonManagedReference
-//   // Create the another column in the Notes Table with the foreign key.
-//    private User user;
+   @ManyToOne
+   @JoinColumn(name="user_id")
+   @JsonBackReference
+   // Create the another column in the Notes Table with the foreign key.
+    private User userId;
 }

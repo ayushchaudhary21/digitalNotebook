@@ -19,13 +19,13 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<?> createUser(@RequestBody User user) {
-        userServiceInterface.createUser(user);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(userServiceInterface.createUser(user),HttpStatus.CREATED);
+
     }
-    @GetMapping("/getbyId/{id}")
-    public ResponseEntity<User>getUserInfo(@PathVariable("id") long userId)
+    @GetMapping("/getbyuserName/{userName}")
+    public ResponseEntity<User>getUserInfo(@PathVariable("userName") String userName)
     {
-        return new ResponseEntity<>(userServiceInterface.getuserInfo(userId),HttpStatus.OK);
+        return new ResponseEntity<>(userServiceInterface.getuserInfo(userName),HttpStatus.OK);
     }
 
      @DeleteMapping("/deletebyid/{id}")
@@ -34,10 +34,10 @@ public class UserController {
          userServiceInterface.deleteById(userId);
          return new ResponseEntity<>(HttpStatus.NO_CONTENT);
      }
-    @PutMapping("/update/{userid}")
-    public ResponseEntity<?> updateUser(@PathVariable ("userid") long userId,
+    @PutMapping("/update/{userName}")
+    public ResponseEntity<?> updateUser(@PathVariable ("userName") String userName,
                                         @RequestBody User user)
     {
-          return new ResponseEntity<>(userServiceInterface.updateUser(userId,user),HttpStatus.OK);
+          return new ResponseEntity<>(userServiceInterface.updateUser(userName,user),HttpStatus.OK);
     }
 }

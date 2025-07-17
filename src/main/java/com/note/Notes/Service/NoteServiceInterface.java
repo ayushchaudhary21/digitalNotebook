@@ -7,10 +7,10 @@ import java.util.List;
 
 @Service
 public interface NoteServiceInterface {
-    void saveNotes(Notes notes);
-    Notes getNotesById(long id);
-    Notes getbyName(String title);
-    List<Notes>getAll();
-    void deleteByTitle(String title);
-    Notes updateByTitle(String title,Notes note);
+    String saveNotes(String userName,Notes notes);
+    Notes getNotesById(String userName,long id);
+    Notes getbyName(String userName,String title);
+    List<Notes>getAll(String userName);
+    void deleteByTitle(String title,String userName);
+    Notes updateByTitle(String userName,String title,Notes note);
 }
