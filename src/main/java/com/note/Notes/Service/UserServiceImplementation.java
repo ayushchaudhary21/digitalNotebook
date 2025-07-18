@@ -1,6 +1,7 @@
 package com.note.Notes.Service;
 
 import com.note.Notes.Entity.User;
+import com.note.Notes.Exceptions.DuplicateEmail;
 import com.note.Notes.Exceptions.DuplicateUser;
 import com.note.Notes.Exceptions.NotesNotFoundException;
 import com.note.Notes.Exceptions.UserNotFoundException;
@@ -17,13 +18,17 @@ public class UserServiceImplementation implements UserServiceInterface{
 
     @Override
     public String createUser(User user) {
-       Optional<User>userDb=userRepository.findByUserName(user.getUserName());
-        if(!userDb.isPresent())
-        {
-            userRepository.save(user);
-            return ("User is Created");
-        }else
-           throw new DuplicateUser("User is already exist :"+user.getUserName());
+       Optional<User> userDb=userRepository.findByUserName(user.getUserName());
+       if(userDb.isPresent()){
+           throw new DuplicateUser("Username already is taken "+user.getUserName());
+       }
+       Optional<User>userDbMail=userRepository.findByUserEmail(user.getUserEmail());
+       if(userDbMail.isPresent())
+       {
+           throw new DuplicateEmail("Email is already taken :"+user.getUserEmail());
+       }
+         userRepository.save(user);
+       return "User are saved in the database";
 
     }
 

@@ -15,4 +15,5 @@ public interface NoteRepository extends JpaRepository<Notes,Long> {
     @Modifying
       void  deleteByTitle(String title);
    Optional<Notes> findByTitle(String title);
+
 }
