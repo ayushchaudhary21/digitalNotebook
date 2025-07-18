@@ -28,6 +28,7 @@ public class NoteServiveImplenation implements  NoteServiceInterface {
             User user = userDb.get();
             boolean alreadyExistNotes = user.getNotesList().stream().anyMatch(noteDb -> noteDb
                     .getNotesId() == (notes.getNotesId()));
+
             if (alreadyExistNotes) {
                 throw new DuplicateTitle("that notes are already exist ");
             }

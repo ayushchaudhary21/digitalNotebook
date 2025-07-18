@@ -67,7 +67,7 @@ public class NotesController {
 
 
 
-        @PutMapping("/updatebytitle/{title}/{username}")
+        @PutMapping("/updatebytitle/{userName}/{title}")
      public ResponseEntity<?> updateByTitle(@PathVariable("userName") String userName,@PathVariable ("title") String title,
                                             @RequestBody Notes note)
         {
