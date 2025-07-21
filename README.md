@@ -90,18 +90,30 @@ curl -u username:password http://localhost:8080/api/notes
 ```
 
 ---
+## 🧪 API Endpoints
 
-## 🧪 API Endpoints (Sample)
+### 🧑 User Endpoints
 
-| Method | Endpoint              | Description           |
-|--------|------------------------|-----------------------|
-| POST   | `/api/user/register`   | Register new user     |
-| GET    | `/api/notes`           | Get all notes         |
-| POST   | `/api/notes`           | Create a new note     |
-| PUT    | `/api/notes/{title}`   | Update note by title  |
-| DELETE | `/api/notes/{id}`      | Delete note by ID     |
+| Method | Endpoint                         | Description             |
+|--------|----------------------------------|-------------------------|
+| POST   | `/user`                          | Register new user       |
+| GET    | `/user/getbyuserName/{userName}` | Get user info by name   |
+| PUT    | `/user/update/{userName}`        | Update user info        |
+| DELETE | `/user/deletebyid/{id}`          | Delete user by ID       |
 
 ---
+
+### 📝 Notes Endpoints
+
+| Method | Endpoint                                      | Description                |
+|--------|-----------------------------------------------|----------------------------|
+| POST   | `/Notes/{userName}`                           | Create a note              |
+| GET    | `/Notes/getAll/{userName}`                    | Get all notes for a user   |
+| GET    | `/Notes/getbyid/{id}/{userName}`              | Get note by ID             |
+| GET    | `/Notes/getbytitle/{title}/{userName}`        | Get note by title          |
+| PUT    | `/Notes/updatebytitle/{userName}/{title}`     | Update note by title       |
+| DELETE | `/Notes/deletebytitle/{title}/{userName}`     | Delete note by title       |
+
 
 ## ✅ To-Do (Next Steps)
 
