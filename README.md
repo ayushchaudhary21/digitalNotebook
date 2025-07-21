@@ -89,7 +89,7 @@ server.port=8081
 Use Postman or curl:
 
 ```bash
-curl -u username:password http://localhost:8080/api/notes
+curl -u username:password http://localhost:8081/notes
 ```
 
 ---
