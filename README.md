@@ -61,12 +61,15 @@ In `application.properties`:
 
 ```properties
 
-spring.datasource.url=jdbc:mysql://localhost:3306/notesdb
+spring.application.name=Notes
+spring.datasource.url=jdbc:mysql://localhost:3306/Notes
 spring.datasource.username=root
-spring.datasource.password=yourpassword
-
+spring.datasource.password=password
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+spring.output.ansi.enabled=ALWAYS
+server.port=8081
 ```
 
 
