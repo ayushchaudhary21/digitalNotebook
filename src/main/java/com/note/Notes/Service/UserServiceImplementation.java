@@ -7,6 +7,7 @@ import com.note.Notes.Exceptions.NotesNotFoundException;
 import com.note.Notes.Exceptions.UserNotFoundException;
 import com.note.Notes.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -15,6 +16,8 @@ public class UserServiceImplementation implements UserServiceInterface{
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public String createUser(User user) {
@@ -27,6 +30,7 @@ public class UserServiceImplementation implements UserServiceInterface{
        {
            throw new DuplicateEmail("Email is already taken :"+user.getUserEmail());
        }
+       user.setPassword(passwordEncoder.encode(user.getPassword()));
          userRepository.save(user);
        return "User are saved in the database";
 

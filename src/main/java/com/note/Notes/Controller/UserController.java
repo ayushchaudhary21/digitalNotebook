@@ -6,6 +6,8 @@ import com.note.Notes.Service.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,11 +19,7 @@ public class UserController {
     @Autowired
     private UserServiceInterface userServiceInterface;
 
-    @PostMapping
-    public ResponseEntity<?> createUser(@RequestBody User user) {
-        return new ResponseEntity<>(userServiceInterface.createUser(user),HttpStatus.CREATED);
 
-    }
     @GetMapping("/getbyuserName/{userName}")
     public ResponseEntity<User>getUserInfo(@PathVariable("userName") String userName)
     {
@@ -34,10 +32,11 @@ public class UserController {
          userServiceInterface.deleteById(userId);
          return new ResponseEntity<>(HttpStatus.NO_CONTENT);
      }
-    @PutMapping("/update/{userName}")
-    public ResponseEntity<?> updateUser(@PathVariable ("userName") String userName,
-                                        @RequestBody User user)
+    @PutMapping("/update")
+    public ResponseEntity<?> updateUser(@RequestBody User user)
     {
+        Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
+        String userName=authentication.getName();
           return new ResponseEntity<>(userServiceInterface.updateUser(userName,user),HttpStatus.OK);
     }
 }
