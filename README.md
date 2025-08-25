@@ -41,7 +41,9 @@ src
             ├── Repository
             ├── Entity
             ├── Exceptions
-            └── Configuration
+            ├── Configuration
+            └── dtoModel
+            
 ```
 
 ---
