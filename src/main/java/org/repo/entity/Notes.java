@@ -18,6 +18,8 @@ public class Notes {
    private  long notesId;
     @Column(nullable = false,unique = true)
    private  String title;
+
+
    private  String content;
 
    private LocalDateTime timeStamp=LocalDateTime.now();

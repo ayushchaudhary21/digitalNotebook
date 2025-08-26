@@ -47,7 +47,7 @@ public class NotesController {
 
 
 
-      @GetMapping("getAll")
+      @GetMapping("/getAll")
         public ResponseEntity<List<NotesResponseDTO>> getALl()
         {
             Authentication authentication=SecurityContextHolder.getContext().getAuthentication();

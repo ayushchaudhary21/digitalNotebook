@@ -40,7 +40,7 @@ public class NoteServiceImplenation implements  NoteServiceInterface {
             Notes notes=new Notes();
             notes.setNotesId(notesRequestDTO.getId());
             notes.setTitle(notesRequestDTO.getTitle());
-            notes.setTitle(notesRequestDTO.getContent());
+            notes.setContent(notesRequestDTO.getContent());
             notes.setUserId(userDB);
             noteRepository.save(notes);
             return "Notes are saved";
